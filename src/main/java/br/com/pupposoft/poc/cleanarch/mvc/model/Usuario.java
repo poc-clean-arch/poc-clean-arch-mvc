@@ -1,7 +1,11 @@
 package br.com.pupposoft.poc.cleanarch.mvc.model;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +25,8 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Usuario  {
+public class Usuario implements UserDetails {
+	private static final long serialVersionUID = 2074697474258118834L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +36,22 @@ public class Usuario  {
 	private LocalDate dataNascimento;
 	
 	private List<Automovel> automoveis;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Implementar NOSONAR
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Implementar NOSONAR
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Implementar NOSONAR
+		return null;
+	}
 }

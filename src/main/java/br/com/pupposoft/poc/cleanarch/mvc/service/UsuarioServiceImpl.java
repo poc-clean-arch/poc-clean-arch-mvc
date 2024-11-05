@@ -20,8 +20,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
 @Slf4j
+@Service
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService {
 	
@@ -48,7 +48,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		List<Automovel> automoveis = automovelRepository.findByUsuarioId(usuarioDto.getId());
 		if(automoveis.isEmpty()) {
-			log.warn("Usuário menor de idade. idade={}", idade);
+			log.warn("Usuário sem automovel");
 			throw new UsuarioSemAutomovelCadastradoException();
 		}
 
